@@ -1,0 +1,51 @@
+#!/bin/bash
+USERID=$(id -u)
+ if [$USERID -ne 0]
+ then
+ echo "ERROR::Please run the script with root access"
+ exit1 #given other than 0 upto 127
+ else
+ echo "your running with root acccess"
+fi
+
+#validate function takes input as exit status what command they tried to install
+
+validate(){
+    if [$1 -eq 0]
+    then
+        echo  -e "installed $2 is...$G SUCCESS $N"
+    else
+        echo  -e "installed $2 is...$R FAILURE $N"
+        exit1
+    fi
+}
+
+dnf list installed mysql
+if[$? -ne 0]
+then
+echo "MYSQL is not installed going... to installed"
+dnf install MYSQL
+validate$? "MYSQL"
+else
+echo " MYSQL is already  installed... nothing to do"
+fi
+
+dnf list installed python
+if [$? -eq 0]
+then
+echo "python is not installed going to installed"
+dnf install phython3 -y
+validate$? "phython3"
+else
+echo "python is alredy installed nothong...to do"
+fi
+
+dnf lis installed nginx
+if[$? -ne 0]
+then
+echo "nginx is not installed going...to installed"
+dnf installed ngnix
+validate$? "nginx"
+else
+echo "nginx already installed Nothing...to do"
+fi
