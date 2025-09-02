@@ -41,8 +41,8 @@ else
 fi
 
 dnf lis installed nginx
-if[$? -ne 0]
-  then
+if [$? -ne 0]
+then
     echo "nginx is not installed going...to installed"
     dnf installed ngnix
     validate$? "nginx"
