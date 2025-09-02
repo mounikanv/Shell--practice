@@ -11,12 +11,12 @@ fi
 #validate function takes input as exit status what command they tried to install
 
 VALIDATE(){
-    if [$1 -eq 0]
+    if [ $1 -eq 0 ] 
     then
         echo  -e "installed $2 is...$G SUCCESS $N"
     else
         echo  -e "installed $2 is...$R FAILURE $N"
-        exit1
+        exit 1
     fi
 }
 
@@ -45,7 +45,7 @@ if [ $? -ne 0 ]
 then
     echo "nginx is not installed going...to installed"
     dnf installed ngnix
-    validate$? "nginx"
+    VALIDATE $? "nginx"
 else
     echo "nginx already installed Nothing...to do"
 fi
