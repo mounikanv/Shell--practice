@@ -1,23 +1,39 @@
 #!/bin/bash
+
 USERID=$(id -u)
-if [$USERID -ne 0]
+
+if [ $USERID -ne 0 ]
 then
-    echo "Error:: please run thos script with root access ot not"
-    exit1
-else 
-    echo "you are runnin g with root access"
+    echo "ERROR:: Please run this script with root access"
+    exit 1 #give other than 0 upto 127
+else
+    echo "You are running with root access"
 fi
 
-dnf list installed my sql
-or not, if installed $? is 0, then
-not 0. then exrastion is true
-if ($? -ne 0)
-then 
-    echo "installing my sql is success"
-else 
-    echo "installing my sql is failure"
-    exit1
-fi
+dnf list installed mysql
+
+# check already installed or not. if Installed $? is 0, then 
+# If not installed $? is not 0. expression is true
+if [ $? -ne 0 ]
+then
+    echo "MySQL is not installed... going to install it"
+    dnf install mysql -y
+    if [ $? -eq 0 ]
+    then
+        echo "Installing MySQL is ... SUCCESS"
+    else
+        echo "Installing MySQL is ... FAILURE"
+        exit 1
+    fi
 else
-    echo "my sql is already installed nothing to do"
+    echo "MySQL is already installed...Nothing to do"
 fi
+# dnf install mysql -y
+
+# if [ $? -eq 0 ]
+# then
+#     echo "Installing MySQL is ... SUCCESS"
+# else
+#     echo "Installing MySQL is ... FAILURE"
+#     exit 1
+# fi
