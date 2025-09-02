@@ -34,7 +34,7 @@ else
 fi
 
 dnf list installed python
-if [$? -eq 0]
+if [ $? -ne 0 ]
 then
     echo "python is not installed going to installed"
     dnf install phython3 -y
@@ -44,7 +44,7 @@ else
 fi
 
 dnf lis installed nginx
-if[$? -ne 0]
+if [ $? -ne 0 ]
 then
     echo "nginx is not installed going...to installed"
     dnf installed ngnix
