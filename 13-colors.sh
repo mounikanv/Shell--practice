@@ -4,7 +4,7 @@ R="\e[31m"
 G="\e[32m"
 Y="\e[33m"
 N="\e[0m"
-if [ SERID -ne 0 ]
+if [ USERID -ne 0 ]
 then
     echo -e "$R ERROR:: Please run this script with root access $N"
     exit1
@@ -14,7 +14,7 @@ fi
 
 
 validate(){
-    if [$1 -eq 0]
+    if [$1 -eq 0 ]
     then
         echo  -e "installed $2 is...$G SUCCESS $N"
     else
