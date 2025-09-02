@@ -14,12 +14,12 @@ fi
 
 
 validate(){
-    if [$1 -eq 0 ]
+    if [ $1 -eq 0 ]
     then
         echo  -e "installed $2 is...$G SUCCESS $N"
     else
         echo  -e "installed $2 is...$R FAILURE $N"
-        exit1
+        exit 1
     fi
 }
 
@@ -43,7 +43,7 @@ else
     echo -e "NOthing to do Python..$Y already installed $N"
 fi
 
-dnf lis installed nginx
+dnf list installed nginx
 if [ $? -ne 0 ]
 then
     echo "nginx is not installed going...to installed"
