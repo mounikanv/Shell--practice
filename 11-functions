@@ -21,7 +21,7 @@ validate(){
 }
 
 dnf list installed mysql
-if [$? -ne 0]
+if [ $? -ne 0 ]
 then
     echo "MYSQL is not installed going... to installed"
     dnf install MYSQL
@@ -31,7 +31,7 @@ else
 fi
 
 dnf list installed python
-if [$? -ne 0]
+if [ $? -ne 0 ]
 then
     echo "python is not installed going to installed"
     dnf install phython3 -y
@@ -40,8 +40,8 @@ else
     echo "python is alredy installed nothong...to do"
 fi
 
-dnf lis installed nginx
-if [$? -ne 0]
+dnf list installed nginx
+if [ $? -ne 0 ]
 then
     echo "nginx is not installed going...to installed"
     dnf installed ngnix
