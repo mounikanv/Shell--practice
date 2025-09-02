@@ -33,11 +33,11 @@ else
     echo -e "Nothing to do mysql..$y already insatll $N"
 fi
 
-dnf list installed python
+dnf list installed python3
 if [ $? -ne 0 ]
 then
     echo "python is not installed going to installed"
-    dnf install phython3 -y
+    dnf install python3 -y
      
 else
     echo -e "NOthing to do Python..$Y already installed $N"
